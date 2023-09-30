@@ -6,3 +6,11 @@ resource "aws_instance" "web" {
     Name = "HelloWorld"
   }
 }
+
+resource "aws_route53_record" "www" {
+  zone_id = "Z0073724138YO075ETFE9"
+  name    = "test.ayeeshadevops75.online"
+  type    = "A"
+  ttl     = 30
+  records = [ aws_instance.web.private_ip ]
+}
